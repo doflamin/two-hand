@@ -5,7 +5,7 @@ $user = $this->session->userdata('user');
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head>    
     <title>Resale_v2 a Classified ads Category Flat </title>
     <base href="<?php echo site_url() ?>">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css"><!-- bootstrap-CSS -->
