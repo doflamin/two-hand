@@ -8,6 +8,9 @@ $user = $this->session->userdata('user');
 <head>
     <title>Resale_v2 a Classified ads Category Flat Bootstrap Responsive Website Template | Cars :: w3layouts</title>
     <base href="<?php echo site_url() ?>">
+
+
+    
     <link rel="stylesheet" href="assets/css/bootstrap.min.css"><!-- bootstrap-CSS -->
     <link rel="stylesheet" href="assets/css/bootstrap-select.css"><!-- bootstrap-select-CSS -->
     <link href="assets/css/style.css" rel="stylesheet" type="text/css" media="all"/><!-- style.css -->
