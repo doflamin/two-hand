@@ -66,35 +66,17 @@ class Ads_model extends CI_Model{
         return $query->result();
     }
 //修改商品信息
-    public function update_ads($data,$ids){
-        // $sql="update t_ads set adsname='$data[adsname]' where ads_id='$ids'";
-        // echo $sql;
-        // die();
-      
-        /*$data = array(
-            'adsname' => $adsname,
-            'describe' => $describe,
-            'adstype'=>$adstype,
-            'price'=>$price,
-            'user_id'=>$user->user_id,
-            'photo'=>$photo_all
-        );*/
-        
-       $this->db->where('ads_id', $ids);
-    //    $query=$this->db->update('t_ads', $data);
-       $query=$this->db->update('t_ads', $data, "ads_id ='$ids'");
-    //    var_dump($query);
-    //    die();
-        
-        return $query;
-        //return $this->db->affected_rows();
+    public function update_ads($data,$ids){              
+       $this->db->where('ads_id', $ids);   
+       $query=$this->db->update('t_ads', $data, "ads_id ='$ids'");           
+        return $query;       
     }
 //添加评论
     public function add_comment($comment){
         $this->db->insert('t_comment', $comment);
         return $this->db->affected_rows();
     }
-    //获取评论
+//获取评论
     public function get_comment($ids){
         $this->db->select('*');
         $this->db->from('t_comment a');
@@ -103,7 +85,33 @@ class Ads_model extends CI_Model{
         return $query->result();
 
     }
+//添加反馈
+    public function add_complaint($data){
+        $this->db->insert('t_complaint', $data);
+        return $this->db->affected_rows();
+    }
+//添加订单
+    public function add_order($data){
+        $this->db->insert('t_order', $data);
+        return $this->db->affected_rows();
+    }
+//添加回复
+    public function add_reply($data){
+        $this->db->insert('t_reply', $data);
+        return $this->db->affected_rows();
+    }
+//获取回复
+public function get_reply($ids){
+    $this->db->select('*');
+    $this->db->from('t_reply a');
+    $this->db->where('a.ads_id',$ids);
+    $query = $this->db->get();
+    return $query->result();
+
+}
     
+
+
 }
 
 

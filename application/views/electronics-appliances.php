@@ -6,8 +6,7 @@ $user = $this->session->userdata('user');
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Resale_v2 a Classified ads Category Flat Bootstrap Responsive Website Template | Electronics $ Appliances ::
-        w3layouts</title>
+    <title>电子电器</title>
     <base href="<?php echo site_url() ?>">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css"><!-- bootstrap-CSS -->
     <link rel="stylesheet" href="assets/css/bootstrap-select.css"><!-- bootstrap-select-CSS -->
@@ -173,7 +172,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <i class="fa fa-search" aria-hidden="true"> </i>
             </button>
             </form>
-                <a class="post-w3layouts-ad" href="user/postad">免费发布信息</a>
+            <div class="agileits_search" style="width:264px; position:relative;top:-50px;">
+            <a class="post-w3layouts-ad" href="user/myads">我的物品</a>
+            <a class="post-w3layouts-ad" href="user/postad">免费发布商品信息</a>             
             </div>
             <div class="clearfix"></div>
         </div>
@@ -206,19 +207,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </div>
 
 
-                <div class="w3-brand-select">
-                    <h3 class="agileits-sear-head">菜单</h3>
-                    <select class="selectpicker" data-live-search="true">
-                        <option data-tokens="All">All</option>
-                        <option data-tokens="Computers">Computers</option>
-                        <option data-tokens="Hard Disk">Hard Disk</option>
-                        <option data-tokens="Internet">Internet</option>
-                        <option data-tokens="Laptops">Laptops</option>
-                        <option data-tokens="Monitors">Monitors</option>
-                        <option data-tokens="Printers">Printers</option>
-                        <option data-tokens="Other Accessories">Other Accessories</option>
-                    </select>
-                </div>
+               
                
             </div>
             <div class="agileinfo-ads-display col-md-9">
@@ -252,16 +241,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                             <a class="gridview"><i class="glyphicon glyphicon-th"></i></a>
                                             <a class="listview active"><i class="glyphicon glyphicon-th-list"></i></a>
                                         </div>
-                                        <div class="sort">
-                                            <div class="sort-by">
-                                                <label>排序 : </label>
-                                                <select>
-                                                    <option value="">最多点击t</option>
-                                                    <option value="">价格：从低到高</option>
-                                                    <option value="">价格：从高到低</option>
-                                                </select>
-                                            </div>
-                                        </div>
+                                       
                                         <div class="clearfix"></div>
                                         <ul class="list">                                           
                                             
@@ -298,18 +278,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             </div>
                             
                             
-                            <ul class="pagination pagination-sm">
-                                <li><a href="#">Prev</a></li>
-                                <li><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                                <li><a href="#">6</a></li>
-                                <li><a href="#">7</a></li>
-                                <li><a href="#">8</a></li>
-                                <li><a href="#">Next</a></li>
-                            </ul>
+                           
                         </div>
                     </div>
                 </div>

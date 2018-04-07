@@ -140,9 +140,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="logo">
                 <h1><a href="user/index"><span>二手</span>交易平台</a></h1>
             </div>
-            <div class="agileits_search">
-               
-                <a class="post-w3layouts-ad" href="user/postad">免费发布商品信息</a>
+            <div class="agileits_search" >
+            <a class="post-w3layouts-ad" href="user/myads">我的物品</a>
+            <a class="post-w3layouts-ad" href="user/postad">免费发布商品信息</a>             
             </div>
             <div class="clearfix"></div>
         </div>
@@ -182,10 +182,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                 <div class="clearfix"></div>
                 <label name="describe">广告描述 <span>*</span></label>
-                <textarea class="mess" name="describe" id="describe" placeholder="请输入关于商品的描述"></textarea>
+                <textarea class="mess" name="describe" id="describe" placeholder="请输入关于商品的描述和商品的新旧程度"></textarea>
                 <div class="clearfix"></div>
                 <div class="upload-ad-photos">
-                    <label name="photo">拍照为您的广告 :</label>
+                    
                     
                     <div class="photos-upload-view">
                    

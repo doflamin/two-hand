@@ -18,7 +18,7 @@ if ($this->session->userdata('user') == "") {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>发布信息</title>
+    <title>更新信息</title>
     <base href="<?php echo site_url() ?>">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css"><!-- bootstrap-CSS -->
     <link rel="stylesheet" href="assets/css/bootstrap-select.css"><!-- bootstrap-select-CSS -->
@@ -165,19 +165,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         
         <form action="user/do_update" enctype="multipart/form-data" method="post" >
                 <label>选择类别 <span>*</span></label>
-                <?php 
-                                             foreach($list as $ads ){
-                                             
-                                             ?>
-
+                <?php foreach($list as $ads ){
+                ?>
                 <select class=""  name="adstype" id="adstype">
                     <option value="<?php  echo $ads->adstype;?>"><?php  echo $ads->adstype;?></option>
                     <option value="手机">手机</option>
                     <option value="电子电器">电子电器</option>
                     <option value="汽车">汽车</option>
-                    <option value="摩托">摩托</option>
-                    
+                    <option value="摩托">摩托</option>                   
                 </select>
+
                 <div class="clearfix"></div>
                 <label name="title" for="title">广告标题 <span>*</span></label>
                 <input type="text" name="title" id="title" class="phone" placeholder="" value="<?php  echo $ads->adsname;?>">
@@ -194,7 +191,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <!-- <textarea class="mess" name="describe" id="describe"    placeholder="<?php  echo $ads->describe;?>"></textarea> -->
                 <div class="clearfix"></div>
                 <div class="upload-ad-photos">
-                    <label name="photo">拍照为您的广告 :</label>
+                    <label name="photo">当前您的物品照片为 :</label>
                     
                     <div class="photos-upload-view">
                     <img src="<?php echo 'http://127.0.0.1/market/'.$ads->photo?>" title="" alt="" style="width:100px;height:100px;" />

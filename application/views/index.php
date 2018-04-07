@@ -112,7 +112,7 @@ $user = $this->session->userdata('user');
         <li>
             <div class="w3ls-slide-text">
                 <h3>在线出售二手商品</h3>
-                <a href="user/categories" class="w3layouts-explore-all">浏览所有类别</a>
+                <a href="user/categories" class="w3layouts-explore-all">浏览所有商品</a>
             </div>
         </li>
     </ul>

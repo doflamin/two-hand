@@ -5,8 +5,8 @@ $user = $this->session->userdata('user');
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<head>    
-    <title>Resale_v2 a Classified ads Category Flat </title>
+<head>
+    <title>自行车</title>
     <base href="<?php echo site_url() ?>">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css"><!-- bootstrap-CSS -->
     <link rel="stylesheet" href="assets/css/bootstrap-select.css"><!-- bootstrap-select-CSS -->
@@ -173,7 +173,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <i class="fa fa-search" aria-hidden="true"> </i>
             </button>
             </form>
-                <a class="post-w3layouts-ad" href="user/postad">免费发布信息</a>
+            <div class="agileits_search" style="width:264px; position:relative;top:-50px;">
+            <a class="post-w3layouts-ad" href="user/myads">我的物品</a>
+            <a class="post-w3layouts-ad" href="user/postad">免费发布商品信息</a>             
             </div>
             <div class="clearfix"></div>
         </div>
@@ -206,24 +208,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </div>
 
 
-                <div class="w3-brand-select">
-                    <h3 class="agileits-sear-head">品牌名称</h3>
-                    <select class="selectpicker" data-live-search="true">
-                        <option data-tokens="All">All</option>
-                        <option data-tokens="Bajaj">Bajaj</option>
-                        <option data-tokens="Harley Davidson">Harley Davidson</option>
-                        <option data-tokens="Hero">Hero</option>
-                        <option data-tokens="Hero Honda">Hero Honda</option>
-                        <option data-tokens="Honda">Honda</option>
-                        <option data-tokens="Kawasaki">Kawasaki</option>
-                        <option data-tokens="KTM">KTM</option>
-                        <option data-tokens="Mahindra">Mahindra</option>
-                        <option data-tokens="Royal Enfield">Royal Enfield</option>
-                        <option data-tokens="Suzuki">Suzuki</option>
-                        <option data-tokens="Yamaha">Yamaha</option>
-                        <option data-tokens="Other Brands">Other Brands</option>
-                    </select>
-                </div>
+                
+              
                 
             </div>
             <div class="agileinfo-ads-display col-md-9">
@@ -258,14 +244,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                             <a class="listview active"><i class="glyphicon glyphicon-th-list"></i></a>
                                         </div>
                                         <div class="sort">
-                                            <div class="sort-by">
-                                                <label>Sort By : </label>
-                                                <select>
-                                                    <option value="">最多访问</option>
-                                                    <option value="">价格从低到高</option>
-                                                    <option value="">价格从高到低</option>
-                                                </select>
-                                            </div>
+                                            
                                         </div>
                                         <div class="clearfix"></div>
                                         <ul class="list">                                                                                                                    
@@ -305,18 +284,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 </div>
                             </div>
                             
-                            <ul class="pagination pagination-sm">
-                                <li><a href="#">Prev</a></li>
-                                <li><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                                <li><a href="#">6</a></li>
-                                <li><a href="#">7</a></li>
-                                <li><a href="#">8</a></li>
-                                <li><a href="#">Next</a></li>
-                            </ul>
+                           
                         </div>
                     </div>
                 </div>

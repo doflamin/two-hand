@@ -6,7 +6,7 @@ $user = $this->session->userdata('user');
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Resale_v2 a Classified ads</title>
+    <title>商品信息</title>
     <base href="<?php echo site_url() ?>">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css"><!-- bootstrap-CSS -->
     <link rel="stylesheet" href="assets/css/bootstrap-select.css"><!-- bootstrap-select-CSS -->
@@ -25,6 +25,45 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         function hideURLbar() {
             window.scrollTo(0, 1);
         } </script>
+
+        <style>
+        #buy_btn{
+            width:120px;
+            height:40px;
+            margin-top:20px;
+            background:#ffa0a0;
+            border:1px solid #000000;
+
+
+        }
+        #msg_btn{
+            width:70px;
+            height:25px;
+            margin-top:20px;
+            background:#00ffff;
+            border:1px solid #000000;
+        }
+        .reply{
+            width:70px;
+            height:25px;
+            margin-top:20px;
+            background:#ffa0a0;
+            border:1px solid #000000;
+        }
+
+        .refreash{
+            width:70px;
+            height:25px;
+            margin-top:20px;
+            background:#fff;
+            border:1px solid #000000;
+            
+            line-height:25px;
+            text-align:center;
+            border-radius:20%;
+        }
+        
+        </style>
     <!-- //meta tags -->
     <!-- js -->
     <script type="text/javascript" src="assets/js/jquery.min.js"></script>
@@ -135,9 +174,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="logo">
                 <h1><a href="user/index"><span>二手</span>交易平台</a></h1>
             </div>
-            <div class="agileits_search">
-               
-                <a class="post-w3layouts-ad" href="user/postad">免费发布信息</a>
+            <div class="agileits_search" style="width:264px; ">
+            <a class="post-w3layouts-ad" href="user/myads">我的物品</a>
+            <a class="post-w3layouts-ad" href="user/postad">免费发布商品信息</a>             
             </div>
             <div class="clearfix"></div>
         </div>
@@ -166,20 +205,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <h2><?php echo $ads->adsname?></h2>
                
                 <div class="flexslider">
-                    <ul class="slides">
-                        <li data-thumb="<?php echo 'http://127.0.0.1/market/'.$ads->photo?>">
-                        <img src="<?php echo 'http://127.0.0.1/market/'.$ads->photo?>" title="" alt="" style="width:100px;height:100px;" />
-                        </li>
-                        <li data-thumb="<?php echo 'http://127.0.0.1/market/'.$ads->photo?>">
-                        <img src="<?php echo 'http://127.0.0.1/market/'.$ads->photo?>" title="" alt="" style="width:100px;height:100px;" />
-                        </li>
-                        <li data-thumb="<?php echo 'http://127.0.0.1/market/'.$ads->photo?>">
-                        <img src="<?php echo 'http://127.0.0.1/market/'.$ads->photo?>" title="" alt="" style="width:100px;height:100px;" />
-                        </li>
-                        <li data-thumb="<?php echo 'http://127.0.0.1/market/'.$ads->photo?>">
-                        <img src="<?php echo 'http://127.0.0.1/market/'.$ads->photo?>" title="" alt="" style="width:100px;height:100px;" />
-                        </li>
-                    </ul>
+                <img src="<?php echo 'http://127.0.0.1/market/'.$ads->photo?>" title="" alt="" style="width:400px;height:400px; margin:0 auto;" />
+                    
                 </div>
                 <!-- FlexSlider -->
                 <script defer src="assets/js/jquery.flexslider.js"></script>
@@ -197,7 +224,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="product-details">
                     
                     
-                    <h4><span class="w3layouts-agileinfo">新旧程度 </span>二手</h4>
+                    
                     <h4><span class="w3layouts-agileinfo">描述</span> :<p><?php echo $ads->describe?></p>
                         <div class="clearfix"></div>
                     </h4>
@@ -208,14 +235,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="item-price">
                     <div class="product-price">
                         <p class="p-price">价格</p>
-                        <h3 class="rate"><?php echo $ads->price?></h3>
+                        <h3 class="rate"><?php echo '￥'.$ads->price?></h3>
                         <div class="clearfix"></div>
                     </div>
-                    <div class="condition">
-                        <p class="p-price">新旧程度</p>
-                        <h4>二手</h4>
-                        <div class="clearfix"></div>
-                    </div>
+                   
                     <div class="itemtype">
                         <p class="p-price">商品类型</p>
                         <h4><?php echo $ads->adstype?></h4>
@@ -223,18 +246,52 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </div>
                 </div>
                 <div class="interested text-center">
-                    <h4>对这个广告感兴趣吗？
-                        <small>立即购买</small>
+                    <form action="user/buy" method="get">
+                    <h4>对这个商品感兴趣吗？
+                    <input type="text" name="user_id" style="display:none;"  value="<?php  echo $ads->user_id;?>">
+                    <input type="text" name="ads_id" style="display:none;"  value="<?php  echo $ads->ads_id;?>">                   
+                    <input type="text" name="title" style="display:none;"  value="<?php  echo $ads->adsname;?>">
+                    <input type="text" name="adstype" style="display:none;"  value="<?php  echo $ads->adstype;?>">
+                    <input type="text" name="describe" style="display:none;"  value="<?php  echo $ads->describe;?>">
+                    <input type="text" name="price" style="display:none;"  value="<?php  echo $ads->price;?>">
+                    <input type="text" name="photo" style="display:none;"  value="<?php  echo $ads->photo;?>">
+
+
                     </h4>
-                   <a href="javascript:;">立即购买</a>
+                    <input type="submit" value="购买" id="buy_btn" >
+                    </form>
+
                 </div>
                 <div class="tips">
                     <h4>已有评论</h4>
-                    <ol>
+                    <ol style="list-style:none;">
                     <?php 
-                        foreach($list2 as $comment ){                                        
+                        foreach($comment_results as $comment ){                                        
                     ?>
-                        <li><a href="javascript:;"><?php echo $comment->comment_content ?></a></li>
+                        <li>
+                            <a href="javascript:;">
+                            <?php echo $comment->commenter ?> 说：
+                            <?php echo $comment->comment_content ?> 
+                            
+                            </a>
+                        </li>
+                        
+                    <?php 
+                        }                                        
+                    ?>
+
+                     <?php 
+                        foreach($reply_results as $reply ){                                        
+                    ?>
+                        <li>
+                            <a href="javascript:;">
+                            <?php echo $reply->replyer ?> 回复
+                            <?php echo $reply->commenter ?>
+
+                            说：
+                            <?php echo $reply->reply_content ?> 
+                            </a>
+                        </li>
                         
                     <?php 
                         }                                        
@@ -244,9 +301,37 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </div>
                 <form action="user/add_comment" method="get" >
                 <label name="comment" for="comment">请输入您想说的话 <span>*</span></label>
-                <input type="text" name="comment" id="comment" class="comment" placeholder="">              
+                <input type="text" name="comment" id="comment" class="comment" placeholder="">   
+                <input type="text" name="commenter" id="commenter" class="commenter" placeholder="" value="<?php echo $user->nickname?>" style="display:none;">
                 <input type="text" name="id" id="id" class="id" placeholder="" value="<?php echo $ads->ads_id?>" style="display:none;">
-                <input type="submit" value="发表" id="btn">            
+                <input type="submit" value="发表" id="msg_btn">            
+                </form>
+
+
+
+                <form action="user/reply" method="post">
+
+                   
+                    <label name="reply" for="reply">或想回复的评论： <span>*</span></label>
+                    <select class=""  name="commenter" id="comment_id">
+                    
+                    <option value="请选择要回复的人">请选择要回复的人</option>
+                    <?php 
+                        foreach($comment_results as $comment ){                                        
+                    ?>
+                        <option name="commenter" value="<?php echo $comment->commenter ?>"><?php echo $comment->commenter ?></option>
+                        <?php 
+                        }                                        
+                    ?>
+                    </select>
+                    <input type="text" name="reply_content" id="reply" placeholder=""> 
+
+                    <input type="text" name="id" id="id" class="id" placeholder="" value="<?php echo $ads->ads_id?>" style="display:none;">
+                    <input type="text" name="replyer" id="replyer" class="replyer" placeholder="" value="<?php echo $user->nickname?>" style="display:none;">
+                                    
+                                    
+                                    
+                    <button class="reply">回复</button>
                 </form>
             </div>
             <div class="clearfix"></div>
@@ -265,7 +350,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="w3-footer-social-icons">
             </div>
             <div class="copyrights">
-                <p> © 2016 Resale. All Rights Reserved | Design by <a href="http://w3layouts.com/"> W3layouts</a></p>
+                <p> © 2016 Resale. All Rights Reserved</p>
             </div>
             <div class="clearfix"></div>
         </div>

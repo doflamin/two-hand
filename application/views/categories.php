@@ -8,8 +8,7 @@ $user = $this->session->userdata('user');
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Resale_v2 a Classified ads Category Flat Bootstrap Responsive Website Template | Categories ::
-        w3layouts</title>
+    <title>所有商品</title>
     <base href="<?php echo site_url() ?>">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css"><!-- bootstrap-CSS -->
     <link rel="stylesheet" href="assets/css/bootstrap-select.css"><!-- bootstrap-select-CSS -->
@@ -141,17 +140,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <h1><a href="user/index"><span>二手</span>交易平台</a></h1>
             </div>
             <div class="agileits_search">
-                <form action="#" method="post">
-                    <input name="Search" type="text"  id="search" placeholder="请输入要搜索的商品名称" required=""/>
-                    
-                    <button type="button" class="btn btn-default" aria-label="Left Align" id="search_btn">
-                        <i class="fa fa-search" aria-hidden="true"> </i>
-                    </button>
-                </form>
-                <div class="agileits_search" style="position:relative;top:-50px;">
+            <form action="#" method="post">
+            <input name="Search" type="text"  id="search" placeholder="请输入要搜索的商品名称" required=""/>
+            
+            <button type="button" class="btn btn-default" aria-label="Left Align" id="search_btn">
+                <i class="fa fa-search" aria-hidden="true"> </i>
+            </button>
+            </form>
+                <div class="agileits_search" style="width:264px; position:relative;top:-50px;">
                 <a class="post-w3layouts-ad" href="user/myads">我的物品</a>
-                <a class="post-w3layouts-ad" href="user/postad">免费发布商品信息</a>
-              
+                <a class="post-w3layouts-ad" href="user/postad">免费发布商品信息</a>             
                 </div>
                
             </div>
@@ -175,67 +173,46 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <h2 class="w3-head">所有商品</h2>
         <div class="category-list">
             <div id="parentVerticalTab">
-                <div class="agileits-tab_nav">
-                    <ul class="resp-tabs-list hor_1">
-                        <li>所有商品</li>
-                       
-
-                    </ul>
-                    
-                </div>
-                <div class="resp-tabs-container hor_1">
-                  
-                    <div>
-                        <div class="category">
-                      
-                            <div class="category-info">                                                            
-                                        <ul class="list" style="list-style:none; float:left;" >                                            
-                                        
-                                            <?php 
-                                             foreach($list as $ads ){
-                                             
-                                             ?>
-                                             <a href="user/single?id= <?php echo $ads->ads_id; ?>" class="single" >
-                                                <li data-id="<?php echo $ads->ads_id;?>">
-                                                <img src="<?php echo 'http://127.0.0.1/market/'.$ads->photo?>" title="" alt="" style="width:100px;height:100px;" />
-                                                    <section class="list-left">
-                                                    <h5 class="title" id="mes"><?php
-                                                    if (isset($ads)) {
-                                                        echo $ads->adsname;
-                                                        
-                                                    }
-                                                    
-                                                    ?></h5>
-                                                    <!-- <input type="text" value="<?php echo $ads->ads_id;?>"> -->
-                                                        <span class="adprice">
-                                                            <?php echo "$".$ads->price;?>
-                                                        
-                                                        </span>
-                                                        <?php echo $ads->describe;?>
-                                                        <p class="catpath"></p>
-                                                        <!-- <a href="javascript:;" class="del-btn" >删除</a> -->
-                                                    </section>
-                                                    <section class="list-right">
-                                                       
-                                                    </section>
-                                                    <div class="clearfix"></div>
-                                                </li>
-                                                <div class="clearfix"></div>
-                                                <?php }?>
-                                            </a>
-                                        </ul>
-                                    
+                <div >
+                <ul class="list" style="list-style:none; " >                                            
+                
+                    <?php 
+                     foreach($list as $ads ){
+                     
+                     ?>
+                     <a href="user/single?id= <?php echo $ads->ads_id; ?>" class="single" >
+                        <li data-id="<?php echo $ads->ads_id;?>" style="width:280px; float:left; ">
+                        <img src="<?php echo 'http://127.0.0.1/market/'.$ads->photo?>" title="" alt="" style="width:270px;height:250px; margin:0 auto;" />
+                            <section class="list-left">
+                            <h5 class="title" id="mes"><?php
+                            if (isset($ads)) {
+                                echo $ads->adsname;
                                 
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                        
-                    </div>
-                    
-                    
+                            }
+                            
+                            ?></h5>
+                            <!-- <input type="text" value="<?php echo $ads->ads_id;?>"> -->
+                                <span class="adprice">
+                                    <?php echo "$".$ads->price;?>
+                                
+                                </span>
+                                
+                                <p class="catpath"></p>
+                                <!-- <a href="javascript:;" class="del-btn" >删除</a> -->
+                            </section>
+                            <section class="list-right">
                                
+                            </section>
+                            <!-- <div class="clearfix"></div> -->
+                        </li>
+                        <!-- <div class="clearfix"></div> -->
+                        <?php }?>
+                    </a>
+                </ul>
+                    
                 </div>
-                <div class="clearfix"></div>
+                
+                <!-- <div class="clearfix"></div> -->
             </div>
         </div>
     </div>
@@ -269,7 +246,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 $li_node = $(li_node);
                 if($li_node.text().includes(key_word)) {
 
-                    $li_node.attr('style','')
+                    $li_node.attr('style','width:280px; float:left;')
                 }else{
                     $li_node.attr('style', 'display: none;')
                 }

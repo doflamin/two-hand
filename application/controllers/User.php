@@ -15,19 +15,17 @@ class User extends CI_Controller
         
     }
     
-
+//以下是页面加载逻辑模块-------------------------------------------------------------------------------------------------------------------------------------------------
+//加载主页
     public function index()
     {
         $results = $this->Ads_model->get_little_ads_list();       
         $this->load->view('index.php',array('list'=> $results ));
        
     }
-    public function upload()
-    {
-        $this->load->view('upload.php');
-    }
+    
 
-
+//加载修改我的物品信息
     public function refreash()
     {
         $ids = $this->input->get('id');
@@ -41,18 +39,19 @@ class User extends CI_Controller
         // }
         // $this->load->view('refreash.php');
     }
-
+//加载我的物品列表
     public function myads()
     {
         $user = $this->session->userdata('user');  
         $results = $this->Ads_model->get_my_ads_list($user);       
         $this->load->view('myads.php',array('list'=> $results,'user'=>$user ));
     }
+//加载登录界面
     public function signin()
     {
         $this->load->view('signin.php');
     }
-
+//加载摩托界面
     public function bikes()
     {
 
@@ -61,7 +60,7 @@ class User extends CI_Controller
         $results = $this->Ads_model->get_bikes_list();
         $this->load->view('bikes.php',array('list'=> $results ));
     }
-
+// 加载汽车界面
     public function cars()
     {
         $results = $this->Ads_model->get_car_list();
@@ -69,52 +68,53 @@ class User extends CI_Controller
     }
         
         
-
+//加载所有商品界面
     public function categories()
     {
         $results = $this->Ads_model->get_ads_list();       
         $this->load->view('categories.php',array('list'=> $results ));
     }
-
+//加载电子电器界面
     public function electronicsappliances()
     {
         $results = $this->Ads_model->get_electronicsappliances_list();
         $this->load->view('electronics-appliances.php',array('list'=> $results ));
     }
-
+//加载反馈界面
     public function feedback()
     {
         $this->load->view('feedback.php');
     }
-
+//加载手机界面
     public function mobiles()
     {
         $results = $this->Ads_model->get_mobiles_list();
         $this->load->view('mobiles.php',array('list'=> $results ));
     }
-
+//加载上传物品界面
     public function postad()
     {
         $this->load->view('post-ad.php');
     }
-
+//加载注册界面
     public function signup()
     {
         $this->load->view('signup.php');
     }
-
+//加载商品详细信息界面
     public function single()
     {
         $ids = $this->input->get('id');
         
 
         $results = $this->Ads_model->get_resreash_msg($ids);
-        $results2 = $this->Ads_model->get_comment($ids);
-        $this->load->view('single.php',array('list'=> $results,'list2'=>$results2));
+        $comment_results = $this->Ads_model->get_comment($ids);
+        $reply_results = $this->Ads_model->get_reply($ids);
+        $this->load->view('single.php',array('list'=> $results,'comment_results'=>$comment_results,'reply_results'=>$reply_results));
         
     }
 
-    //登陆逻辑
+    //登陆,注册界面逻辑------------------------------------------------------------------------------------------------------------------------------------------------------------
     public function login_check()
     {
         //从view页面获取用户名和密码
@@ -206,25 +206,29 @@ class User extends CI_Controller
 
 
     }
+//以下是发布，购买等功能逻辑--------------------------------------------------------------------------------------------------------------------------------------
     //添加评论
     public function add_comment()
     {
         $comment = $this->input->get('comment');
         $ids = $this->input->get('id');
+        $commenter = $this->input->get('commenter');
         $rows = $this->Ads_model->add_comment(array(
             'comment_content' => $comment,
-            'ads_id'=>$ids
+            'ads_id'=>$ids,
+            'commenter'=>$commenter
+
             
         ));
         if ($rows <= 0) {
            
         } else {
+
             $ids = $this->input->get('id');
-            
-    
             $results = $this->Ads_model->get_resreash_msg($ids);
-            $results2 = $this->Ads_model->get_comment($ids);
-            $this->load->view('single.php',array('list'=> $results,'list2'=>$results2));
+            $comment_results = $this->Ads_model->get_comment($ids);
+            $reply_results = $this->Ads_model->get_reply($ids);
+            $this->load->view('single.php',array('list'=> $results,'comment_results'=>$comment_results,'reply_results'=>$reply_results));
             // redirect("user/single");
            
         }
@@ -232,42 +236,7 @@ class User extends CI_Controller
     }
   
    
-
-
-//添加商品信息
-//     public function post_ad()
-//     {
-//         $adsname = $this->input->get('title');
-//         $describe = $this->input->get('describe');      
-//         $phone = $this->input->get('phone');
-//         $adstype = $this->input->get('adstype');
-//         $price = $this->input->get('price');
-//         $userid = $this->input->get('userid');
-//         $photo = $this->input->get('str');
-//         $photo_all="./uploads/".$photo;
-
-//         $rows = $this->User_model->publish_ads(array(      
-//             'adsname' => $adsname,
-//             'describe' => $describe,
-//             'photo' => $photo,
-//             'adstype'=>$adstype,
-//             'price'=>$price,
-//             'user_id'=>$userid,
-//             'photo'=>$photo_all
-//         ));
-//         if ($rows <= 0) {
-//             echo 'error';
-//         } else {
-//             $this->load->view('signin.php');
-//         }
-        
-       
-
-    
-   
-
-// }
-
+//添加商品逻辑
 public function do_upload()
 {
     
@@ -309,7 +278,7 @@ public function do_upload()
     }
 }
 
-
+//删除我的商品
 public function del_ads(){
       
     $ids = $this->input->get('id');
@@ -318,7 +287,7 @@ public function del_ads(){
         echo 'success';
     }
 }
-
+//修改我的商品信息
 public function do_update()
 {
     
@@ -334,7 +303,7 @@ public function do_update()
     
     $this->load->library('upload', $config);
     // $this->upload->do_update('userfile');
-    
+    $this->upload->do_upload('userfile');
 
     $adsname = $this->input->post('title');
     $describe = $this->input->post('describe');      
@@ -365,14 +334,107 @@ public function do_update()
         $this->load->view('index.php');
     }
 }
+//投诉界面逻辑
+public function complaint()
+{
+    $complaint = $this->input->post('complaint');
+    $userid =  $this->input->post('userid');
+    date_default_timezone_set('Asia/Shanghai');
 
-// public function refreash(){
+
+
+    $rows = $this->Ads_model->add_complaint(array(      
+       'Complaint_content'=>$complaint,
+       'Complaint_time'=>date("Y-m-d h:m:s"),
+       'user_id'=>$userid
+    ));
+
+    if ($rows < 0) {
+        echo '<script>alert("系统错误，请稍后重试！")</script>';
+     } else {
+        echo '<script>alert("反馈成功")</script>';
+        $results = $this->Ads_model->get_little_ads_list();       
+        $this->load->view('index.php',array('list'=> $results ));
+     }
+
+ 
+
+   
+}
+//购买商品逻辑
+public function buy()
+{
+    $user_id = $this->input->get('user_id');
+    $ids = $this->input->get('ads_id');
+    $title = $this->input->get('title');
+    $adstype = $this->input->get('adstype');
+    $describe = $this->input->get('describe');
+    $price = $this->input->get('price');
+    $photo = $this->input->get('photo');
+
+
+    $rows = $this->Ads_model->add_order(array(      
+        'buyer_id'=>$user_id,
+        'ads_id'=>$ids,
+        'title'=>$title,
+        'adstype'=>$adstype,
+        'describe'=>$describe,
+        'price'=>$price,
+        'photo'=>$photo
+
+     ));
+
+
+     $this->Ads_model->del_ads_by_id($ids);
+
+     if ($rows < 0) {
+        echo '<script>alert("系统错误，请稍后重试！")</script>';
+     } else {
+        echo '<script>alert("购买成功")</script>';
+        $results = $this->Ads_model->get_little_ads_list();       
+        $this->load->view('index.php',array('list'=> $results ));
+     }
+
+
+}
+
+//回复评论功能
+
+public function reply()
+{
+    $commenter = $this->input->post('commenter');
     
-//   $ids = $this->input->get('id');
-//   $rows = $this->Ads_model->del_ads_by_id($ids);
-//   if($rows>0){
-//       echo 'success';
-//   }
-// }
+    
+    $reply_content = $this->input->post('reply_content');
+    $ids = $this->input->post('id');
+    $replyer = $this->input->post('replyer');
+    date_default_timezone_set('Asia/Shanghai');
+
+
+    $rows = $this->Ads_model->add_reply(array(      
+        'commenter'=>$commenter,
+        'reply_content'=>$reply_content,
+        'ads_id'=>$ids,
+        'replyer'=>$replyer,
+        'reply_time'=>date("Y-m-d h:m:s")
+        
+     ));
+
+     if ($rows < 0) {
+        echo '<script>alert("系统错误，请稍后重试！")</script>';
+     } else {
+        echo '<script>alert("回复成功")</script>';
+
+        $ids = $this->input->post('id');
+        
+
+        $results = $this->Ads_model->get_resreash_msg($ids);
+        $comment_results = $this->Ads_model->get_comment($ids);
+        $reply_results = $this->Ads_model->get_reply($ids);
+        $this->load->view('single.php',array('list'=> $results,'comment_results'=>$comment_results,'reply_results'=>$reply_results));
+     }
+}
+//---------------------------------------------------------------------------------------------------------------------------------------------------------
+
 }
 ?>

@@ -8,11 +8,12 @@ $user = $this->session->userdata('user');
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Resale_v2 a Classified ads</title>
+    <title>我的物品</title>
     <base href="<?php echo site_url() ?>">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css"><!-- bootstrap-CSS -->
     <link rel="stylesheet" href="assets/css/bootstrap-select.css"><!-- bootstrap-select-CSS -->
     <link href="assets/css/style.css" rel="stylesheet" type="text/css" media="all"/><!-- style.css -->
+    <link rel="stylesheet" type="text/css" href="assets/css/jquery-ui1.css">
     <link rel="stylesheet" href="assets/css/font-awesome.min.css"/><!-- fontawesome-CSS -->
     <link rel="stylesheet" href="assets/css/menu_sideslide.css" type="text/css" media="all"><!-- Navigation-CSS -->
     <!-- meta tags -->
@@ -147,7 +148,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <i class="fa fa-search" aria-hidden="true"> </i>
                     </button>
                 </form>
-                <a class="post-w3layouts-ad" href="user/postad">免费发布信息</a>
+                <div class="agileits_search" style="width:264px; position:relative;top:-50px;">
+            <a class="post-w3layouts-ad" href="user/myads">我的物品</a>
+            <a class="post-w3layouts-ad" href="user/postad">免费发布商品信息</a>             
+            </div>
             </div>
             <div class="clearfix"></div>
         </div>
@@ -168,30 +172,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <div class="container">
         <h2 class="w3-head">我的商品</h2>
         <div class="category-list">
-            <div id="parentVerticalTab">
-                <div class="agileits-tab_nav">
-                    <ul class="resp-tabs-list hor_1">
-                        <li>我的商品</li>
-                       
-
-                    </ul>
-                    
-                </div>
-                <div class="resp-tabs-container hor_1">
-                  
-                    <div>
-                        <div class="category">
-                      
-                            <div class="category-info">                                                            
-                                        <ul class="list" style="list-style:none; float:left;" >                                            
+            <div id="parentVerticalTab">                   
+                <ul class="list" style="list-style:none;">                                            
                                             
                                             <?php 
                                              foreach($list as $ads ){
                                              
                                              ?>
                                              <a href="user/single?id= <?php echo $ads->ads_id; ?>" class="single" >
-                                                <li data-id="<?php echo $ads->ads_id;?>">
-                                                <img src="<?php echo 'http://127.0.0.1/market/'.$ads->photo?>" title="" alt="" style="width:100px;height:100px;" />
+                                                <li data-id="<?php echo $ads->ads_id;?>" style="width:280px; float:left; border:5px soild #000000 ">
+                                                <img src="<?php echo 'http://127.0.0.1/market/'.$ads->photo?>" title="" alt="" style="width:270px;height:250px; margin:0 auto;"  />
                                                     <section class="list-left">
                                                     <h5 class="title" id="mes"><?php
                                                     if (isset($ads)) {
@@ -214,24 +204,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                     <section class="list-right">
                                                        
                                                     </section>
-                                                    <div class="clearfix"></div>
+                                                    
                                                 </li>
-                                                <div class="clearfix"></div>
+                                               
                                                 <?php }?>
+                                               
                                             </a>
-                                        </ul>
-                                    
-                                
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                        
-                    </div>
+                                            
+                                        </ul>  
                     
                     
                                
-                </div>
-                <div class="clearfix"></div>
+                
+                
+              
             </div>
         </div>
     </div>

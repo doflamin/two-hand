@@ -139,9 +139,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="logo">
                 <h1><a href="user/index"><span>二手</span>交易平台</a></h1>
             </div>
-            <div class="agileits_search">
-                
-                <a class="post-w3layouts-ad" href="user/postad">免费发布信息</a>
+            <div class="agileits_search" >
+            <a class="post-w3layouts-ad" href="user/myads">我的物品</a>
+            <a class="post-w3layouts-ad" href="user/postad">免费发布商品信息</a>             
             </div>
             <div class="clearfix"></div>
         </div>
@@ -162,21 +162,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <h2 class="w3-head">反馈</h2>
         <div class="feed-back">
             <h3>告诉我们你对我们的看法</h3>
-            <p>一个长期存在的事实是，读者在浏览版面时，会被页面可读的内容所干扰。使用乱数假文乱数假文点仅仅是印刷排版业虚拟文本。乱数假文一直是行业的标准虚拟文本自从16世纪</p>
             <div class="feed-back-form">
-                <form>
-                    <span>用户详细信息</span>
-                    <input type="text" value="First Name" onfocus="this.value = '';"
-                           onblur="if (this.value == '') {this.value = 'First Name';}">
-                    <input type="text" value="Last Name" onfocus="this.value = '';"
-                           onblur="if (this.value == '') {this.value = 'Last Name';}">
-                    <input type="text" value="Email" onfocus="this.value = '';"
-                           onblur="if (this.value == '') {this.value = 'Email';}">
-                    <input type="text" value="Phone No" onfocus="this.value = '';"
-                           onblur="if (this.value == '') {this.value = 'Phone No';}">
+                <form action="user/complaint" method="post">
                     <span>你有什么要告诉我们的吗？</span>
+
                     <textarea onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message...';}"
-                              required="">信息...</textarea>
+                              required="" name="complaint">信息...</textarea>
+                    <input type="text" name="userid" style="display:none;"  value="<?php  echo $user->user_id;?>">
                     <input type="submit" value="提交">
                 </form>
             </div>
@@ -196,7 +188,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
             </div>
             <div class="copyrights">
-                <p> © 2016 Resale. All Rights Reserved | Design by <a href="http://w3layouts.com/"> W3layouts</a></p>
+                <p> © 2016 Resale. All Rights Reserved </a></p>
             </div>
             <div class="clearfix"></div>
         </div>
